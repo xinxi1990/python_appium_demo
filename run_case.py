@@ -24,15 +24,15 @@ class AppiumServer:
         appium_process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1,
                                           close_fds=True)
 
-        print("启动appium命令:{}".format(cmd))
+        print("start appium cmd:{}".format(cmd))
         is_start = False
         start_time = time.time()
         while not is_start and (time.time() - start_time) < float(self.timeout):
             appium_line = appium_process.stdout.readline().strip().decode()
             time.sleep(1)
-            print("---------启动服务中----------")
+            print("---------appium starting----------")
             if 'listener started' in appium_line:
-                print("---------启动服务成功----------")
+                print("---------appium lanuch success ----------")
                 is_start = True
         return is_start
 
@@ -77,5 +77,5 @@ class TestAppium(unittest.TestCase):
 if __name__ == '__main__':
     appium_server = AppiumServer("127.0.0.1", "4724", "10")
     if not appium_server.start_server():
-        raise StartServerTimeout("在指定时间{}秒内未能启动appium server，请手动检查".format("10"))
+        raise StartServerTimeout("appium lanuch server fai,pleasc check {}".format("10"))
     unittest.main()
