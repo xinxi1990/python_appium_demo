@@ -77,5 +77,6 @@ class TestAppium(unittest.TestCase):
 if __name__ == '__main__':
     appium_server = AppiumServer("127.0.0.1", "4724", "10")
     if not appium_server.start_server():
-        raise StartServerTimeout("appium lanuch server fai,pleasc check {}".format("10"))
+        #raise StartServerTimeout("appium lanuch server fai,pleasc check {}".format("10"))
+        raise
     unittest.main()
